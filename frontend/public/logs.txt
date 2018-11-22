@@ -1,0 +1,29 @@
+BigRobot suite: /Users/vui/Documents/workspace/bsn/bigrobot/testsuites_dev/vui/v0_upgrade_and_config_validate
+Robot options:
+{'debugfile': 'debug.log',
+ 'dryrun': False,
+ 'exclude': ['skipped', 'manual-untested'],
+ 'exitonfailure': False,
+ 'listener': 'autobot.listener.Listener',
+ 'loglevel': 'trace:info',
+ 'outputdir': '/Users/vui/Documents/workspace/bsn/qa-controller-upgrade-backend/src/main/resources/static/upgrade_test_15e2c739-8e23-432a-845a-81445c6ab233',
+ 'settag': ['virtual', 'dummy1']}
+Loaded topology file /Users/vui/Documents/workspace/bsn/bigrobot/testsuites_dev/vui/v0_upgrade_and_config_validate.virtual.topo
+Loaded topology file /Users/vui/Documents/workspace/bsn/qa-controller-upgrade-backend/src/main/resources/static/upgrade_test_15e2c739-8e23-432a-845a-81445c6ab233/additional-params.topo
+==============================================================================
+V0 Upgrade And Config Validate :: Upgrade controller "From" release X "To" ...
+==============================================================================
+TC001 Test controller release validity                                | PASS |
+------------------------------------------------------------------------------
+TC002 Test controller release upgradeability                          | PASS |
+------------------------------------------------------------------------------
+V0 Upgrade And Config Validate :: Upgrade controller "From" releas... | PASS |
+2 critical tests, 2 passed, 0 failed
+2 tests total, 2 passed, 0 failed
+==============================================================================
+Debug:   /Users/vui/Documents/workspace/bsn/qa-controller-upgrade-backend/src/main/resources/static/upgrade_test_15e2c739-8e23-432a-845a-81445c6ab233/debug.log
+Output:  /Users/vui/Documents/workspace/bsn/qa-controller-upgrade-backend/src/main/resources/static/upgrade_test_15e2c739-8e23-432a-845a-81445c6ab233/output.xml
+Log:     /Users/vui/Documents/workspace/bsn/qa-controller-upgrade-backend/src/main/resources/static/upgrade_test_15e2c739-8e23-432a-845a-81445c6ab233/log.html
+Report:  /Users/vui/Documents/workspace/bsn/qa-controller-upgrade-backend/src/main/resources/static/upgrade_test_15e2c739-8e23-432a-845a-81445c6ab233/report.html
+Return code is 0
+Execution time is 00:00:01

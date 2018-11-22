@@ -1,0 +1,817 @@
+# $ mongo -u bsn -p bsn 10.8.10.136:27017/test_catalog_201610
+# $ mongo -u admin -p admin 10.8.10.136:27017/admin
+#
+db_url: mongodb://bsn:bsn@qa-mongodb.qa.bigswitch.com:27017/test_catalog_201610
+
+software_images:
+  bcf:
+  - release: 4.2.5
+    qcow2: http://bigtop.eng.bigswitch.com/~bsn/abat/builds/BCF-4.0.0/bcf_4.2.5/controller-build/BCF-4.2.5-Controller-VM-2018-02-07.qcow2
+    iso:   http://bigtop.eng.bigswitch.com/~bsn/abat/builds/BCF-4.0.0/bcf_4.2.5/controller-build/BCF-4.2.5-Controller-Appliance-2018-02-07.iso
+    from-versions: [ '4.0', '4.1', '4.2' ]  # NOT verified
+  - release: 4.2.6
+    qcow2: http://bigtop.eng.bigswitch.com/~bsn/abat/builds/BCF-4.0.0/bcf_4.2.6/controller-build/BCF-4.2.6-Controller-VM-2018-04-23.qcow2
+    iso:   http://bigtop.eng.bigswitch.com/~bsn/abat/builds/BCF-4.0.0/bcf_4.2.6/controller-build/BCF-4.2.6-Controller-Appliance-2018-04-23.iso
+    from-versions: [ '4.0', '4.1', '4.2' ]  # NOT verified
+  - release: 4.5.0
+    qcow2: http://bigtop.eng.bigswitch.com/~bsn/abat/builds/BCF-4.0.0/bcf_4.5.0-fips_cert/controller-build/BCF-4.5.0-FIPS-Controller-VM-2017-11-03.qcow2
+    iso:   http://bigtop.eng.bigswitch.com/~bsn/abat/builds/BCF-4.0.0/bcf_4.5.0-fips_cert/controller-build/BCF-4.5.0-FIPS-Controller-Appliance-2017-11-03.iso
+    from-versions: [ '4.1', '4.2', '4.5' ]  # NOT verified
+  - release: 4.5.1
+    qcow2: http://bigtop.eng.bigswitch.com/~bsn/abat/builds/BCF-4.0.0/bcf_4.5.1/controller-build/BCF-4.5.1-Controller-VM-2017-12-03.qcow2
+    iso:   http://bigtop.eng.bigswitch.com/~bsn/abat/builds/BCF-4.0.0/bcf_4.5.1/controller-build/BCF-4.5.1-Controller-Appliance-2017-12-03.iso
+    from-versions: [ '4.1', '4.2', '4.5' ]  # NOT verified
+  - release: 4.5.2
+    qcow2: http://bigtop.eng.bigswitch.com/~bsn/abat/builds/BCF-4.0.0/bcf_4.5.2/controller-build/BCF-4.5.2-Controller-VM-2018-01-18.qcow2
+    iso:   http://bigtop.eng.bigswitch.com/~bsn/abat/builds/BCF-4.0.0/bcf_4.5.2/controller-build/BCF-4.5.2-Controller-Appliance-2018-01-18.iso
+    from-versions: [ '4.1', '4.2', '4.5' ]  # NOT verified
+  - release: 4.5.3
+    qcow2: http://bigtop.eng.bigswitch.com/~bsn/abat/builds/BCF-4.0.0/bcf_4.5.3/controller-build/BCF-4.5.3-Controller-VM-2018-02-28.qcow2
+    iso:   http://bigtop.eng.bigswitch.com/~bsn/abat/builds/BCF-4.0.0/bcf_4.5.3/controller-build/BCF-4.5.3-Controller-Appliance-2018-02-28.iso
+    from-versions: [ '4.1', '4.2', '4.5' ]  # NOT verified
+  - release: 4.6.0
+    qcow2: http://bigtop.eng.bigswitch.com/~bsn/abat/builds/BCF-4.0.0/bcf_4.6.0/controller-build/BCF-4.6.0-Controller-VM-2018-02-15.qcow2
+    iso:   http://bigtop.eng.bigswitch.com/~bsn/abat/builds/BCF-4.0.0/bcf_4.6.0/controller-build/BCF-4.6.0-Controller-Appliance-2018-02-15.iso
+    from-versions: [ '4.2', '4.5', '4.6' ]  # NOT verified
+  - release: 4.6.1
+    qcow2: http://bigtop.eng.bigswitch.com/~bsn/abat/builds/BCF-4.0.0/bcf_4.6.1/controller-build/BCF-4.6.1-Controller-VM-2018-04-13.qcow2
+    iso:   http://bigtop.eng.bigswitch.com/~bsn/abat/builds/BCF-4.0.0/bcf_4.6.1/controller-build/BCF-4.6.1-Controller-Appliance-2018-04-13.iso
+    from-versions: [ '4.2', '4.5', '4.6' ]  # NOT verified
+  - release: 4.6.2
+    qcow2: http://bigtop.eng.bigswitch.com/~bsn/abat/builds/BCF-4.0.0/bcf_4.6.2/controller-build/BCF-4.6.2-Controller-VM-2018-06-14.qcow2
+    iso:   http://bigtop.eng.bigswitch.com/~bsn/abat/builds/BCF-4.0.0/bcf_4.6.2/controller-build/BCF-4.6.2-Controller-Appliance-2018-06-14.iso
+    from-versions: [ '4.2', '4.5', '4.6' ]  # NOT verified
+  - release: 4.6.3
+    # 2018-08-14 These images are not in the standard location but on ABAT server
+    # instead. ABAT HTTP server is rather flaky, so we made copies of the images
+    # on our QA Archive server.
+    qcow2: http://qa-archive1.qa.bigswitch.com/controller_configs/software_images/bcf/4.6.3/BCF-4.6.3-Controller-VM-2018-07-24.qcow2
+    iso:   http://qa-archive1.qa.bigswitch.com/controller_configs/software_images/bcf/4.6.3/BCF-4.6.3-Controller-Appliance-2018-07-24.iso
+    from-versions: [ '4.2', '4.5', '4.6' ]  # NOT verified
+  - release: 4.7.0
+    qcow2: http://bigtop.eng.bigswitch.com/~bsn/abat/builds/BCF-4.0.0/bcf_4.7.0/controller-build/BCF-4.7.0-Controller-VM-2018-05-24.qcow2
+    iso:   http://bigtop.eng.bigswitch.com/~bsn/abat/builds/BCF-4.0.0/bcf_4.7.0/controller-build/BCF-4.7.0-Controller-Appliance-2018-05-24.iso
+    from-versions: [ '4.5', '4.6', '4.7' ]  # verified
+  #- release: 4.7.1
+  #  qcow2: in-progress
+  #  iso:   in-progress
+  #  from-versions: [ '4.5', '4.6', '4.7' ]  # verified
+  - release: 5.0.0
+    qcow2: http://jenkins-dl.eng.bigswitch.com/bcf/master/builds/lastSuccessfulBuild/archive/target/appliance/images/bcf/controller-bcf-5.0.0-alpha.qcow2
+    iso:   http://jenkins-dl.eng.bigswitch.com/bcf/master/builds/lastSuccessfulBuild/archive/target/appliance/images/bcf/controller-bcf-5.0.0-alpha.iso
+    from-versions: [ '4.6', '4.7', '5.0' ]  # verified
+  bmf:
+  - release: 6.2.0
+    qcow2: http://10.2.3.11/~bsn/abat/builds/eagle/bmf-6.2.0/BMF-6.2.0-Controller-VM-2017-11-22.qcow2
+    iso:   http://10.2.3.11/~bsn/abat/builds/eagle/bmf-6.2.0/BMF-6.2.0-Controller-Appliance-2017-11-22.iso
+    from-versions: [ '6.0', '6.1', '6.2' ]  # NOT verified
+  - release: 6.2.1
+    qcow2: http://10.2.3.11/~bsn/abat/builds/eagle/bmf-6.2.1/BMF-6.2.1-Controller-VM-2018-04-27.qcow2
+    iso:   http://10.2.3.11/~bsn/abat/builds/eagle/bmf-6.2.1/BMF-6.2.1-Controller-Appliance-2018-04-27.iso
+    from-versions: [ '6.0', '6.1', '6.2' ]  # NOT verified
+  - release: 6.2.2
+    qcow2: http://10.2.3.11/~bsn/abat/builds/eagle/bmf-6.2.2/BMF-6.2.2-Controller-VM-2018-06-11.qcow2
+    iso:   http://10.2.3.11/~bsn/abat/builds/eagle/bmf-6.2.2/BMF-6.2.2-Controller-Appliance-2018-06-11.iso
+    from-versions: [ '6.0', '6.1', '6.2' ]  # NOT verified
+  - release: 6.3.0
+    qcow2: http://10.2.3.11/~bsn/abat/builds/eagle/bmf-6.3.0-coresec-only/BMF-FIPS-6.3.0-Controller-VM-2018-01-20.qcow2
+    iso:   http://10.2.3.11/~bsn/abat/builds/eagle/bmf-6.3.0-coresec-only/BMF-FIPS-6.3.0-Controller-Appliance-2018-01-20.iso
+    from-versions: [ '6.1', '6.2', '6.3' ]  # NOT verified
+  - release: 6.3.1
+    qcow2: http://10.2.3.11/~bsn/abat/builds/eagle/bmf-6.3.1-NTT-DOCOMO-ONLY/BMF-6.3.1-Controller-VM-2018-02-28.qcow2
+    iso:   http://10.2.3.11/~bsn/abat/builds/eagle/bmf-6.3.1-NTT-DOCOMO-ONLY/BMF-6.3.1-Controller-Appliance-2018-02-28.iso
+    from-versions: [ '6.1', '6.2', '6.3' ]  # NOT verified
+  - release: 6.3.2
+    qcow2: http://10.2.3.11/~bsn/abat/builds/eagle/bmf-6.3.2/BMF-6.3.2-Controller-VM-2018-03-30.qcow2
+    iso:   http://10.2.3.11/~bsn/abat/builds/eagle/bmf-6.3.2/BMF-6.3.2-Controller-Appliance-2018-03-30.iso
+    from-versions: [ '6.1', '6.2', '6.3' ]  # NOT verified
+  - release: 6.3.3
+    qcow2: http://10.2.3.11/~bsn/abat/builds/eagle/bmf-6.3.3/BMF-6.3.3-Controller-VM-2018-05-17.qcow2
+    iso:   http://10.2.3.11/~bsn/abat/builds/eagle/bmf-6.3.3/BMF-6.3.3-Controller-Appliance-2018-05-17.iso
+    from-versions: [ '6.1', '6.2', '6.3' ]  # NOT verified
+  - release: 6.3.4
+    qcow2: http://10.2.3.11/~bsn/abat/builds/eagle/bmf-6.3.4/images/BMF-6.3.4-Controller-VM-2018-06-29.qcow2
+    iso:   http://10.2.3.11/~bsn/abat/builds/eagle/bmf-6.3.4/images/BMF-6.3.4-Controller-Appliance-2018-06-29.iso
+    from-versions: [ '6.1', '6.2', '6.3' ]  # NOT verified
+  - release: 7.0.0
+    qcow2: http://jenkins-dl.eng.bigswitch.com/bmf/master/builds/lastSuccessfulBuild/archive/target/appliance/images/bmf/controller-bmf-7.0.0-alpha.qcow2
+    iso:   http://jenkins-dl.eng.bigswitch.com/bmf/master/builds/lastSuccessfulBuild/archive/target/appliance/images/bmf/controller-bmf-7.0.0-alpha.iso
+    from-versions: [ '6.2', '6.3', '7.0' ]  # verified
+
+ofad_artifacts:
+  bmf:
+    6.0.0:
+      bin:  http://qa-archive1.qa.bigswitch.com/ofad_artifacts/bmf/bmf-6.0.0.0/2016-11-16/ofad
+      conf: http://qa-archive1.qa.bigswitch.com/ofad_artifacts/bmf/bmf-6.0.0.0/2016-11-16/ofad.conf
+    6.0.1:
+      bin:  http://qa-archive1.qa.bigswitch.com/ofad_artifacts/bmf/bmf-6.0.1.0/2017-6-1/ofad
+      conf: http://qa-archive1.qa.bigswitch.com/ofad_artifacts/bmf/bmf-6.0.1.0/2017-6-1/ofad.conf
+    6.1.0:
+      bin:  http://qa-archive1.qa.bigswitch.com/ofad_artifacts/bmf/bmf-6.1.0.0/2017-7-19/ofad
+      conf: http://qa-archive1.qa.bigswitch.com/ofad_artifacts/bmf/bmf-6.1.0.0/2017-7-19/ofad.conf
+    6.2.0:
+      bin:  http://qa-archive1.qa.bigswitch.com/ofad_artifacts/bmf/bmf-6.2.0.0/2017-09-25/ofad
+      conf: http://qa-archive1.qa.bigswitch.com/ofad_artifacts/bmf/bmf-6.2.0.0/2017-09-25/ofad.conf
+    6.2.1:
+      bin:  http://qa-archive1.qa.bigswitch.com/ofad_artifacts/bmf/bmf-6.2.1/2018-04-20/ofad
+      conf: http://qa-archive1.qa.bigswitch.com/ofad_artifacts/bmf/bmf-6.2.1/2018-04-20/ofad.conf
+    6.3.0:
+      bin:  http://qa-archive1.qa.bigswitch.com/ofad_artifacts/bmf/bmf-6.3.0.0/2017-11-07/ofad
+      conf: http://qa-archive1.qa.bigswitch.com/ofad_artifacts/bmf/bmf-6.3.0.0/2017-11-07/ofad.conf
+    6.3.1:
+      bin:  http://qa-archive1.qa.bigswitch.com/ofad_artifacts/bmf/bmf-6.3.1.0/2017-11-07/ofad
+      conf: http://qa-archive1.qa.bigswitch.com/ofad_artifacts/bmf/bmf-6.3.1.0/2017-11-07/ofad.conf
+    6.3.2:
+      bin:  http://qa-archive1.qa.bigswitch.com/ofad_artifacts/bmf/bmf-6.3.2/2017-11-07/ofad
+      conf: http://qa-archive1.qa.bigswitch.com/ofad_artifacts/bmf/bmf-6.3.2/2017-11-07/ofad.conf
+    6.3.3:
+      bin:  http://qa-archive1.qa.bigswitch.com/ofad_artifacts/bmf/bmf-6.3.3/2018-04-20/ofad
+      conf: http://qa-archive1.qa.bigswitch.com/ofad_artifacts/bmf/bmf-6.3.3/2018-04-20/ofad.conf
+    6.4.0:
+      bin:  http://qa-archive1.qa.bigswitch.com/ofad_artifacts/bmf/bmf-6.4.0/2017-11-07/ofad
+      conf: http://qa-archive1.qa.bigswitch.com/ofad_artifacts/bmf/bmf-6.4.0/2017-11-07/ofad.conf
+    7.0.0:
+      bin:  http://qa-archive1.qa.bigswitch.com/ofad_artifacts/bmf/bmf-7.0.0/2018-5-17/ofad
+      conf: http://qa-archive1.qa.bigswitch.com/ofad_artifacts/bmf/bmf-7.0.0/2018-5-17/ofad.conf
+
+jenkins_testbed_to_slave_map:
+  bcf:
+    testbed-virtual: reg-bcf-jenkins-slave-1
+    testbed-10g: reg-bcf-jenkins-slave-2
+    testbed-common: reg-bcf-jenkins-slave-3
+    testbed-t2t2p: reg-bcf-jenkins-slave-4
+    testbed-thpt2p: reg-bcf-jenkins-slave-5
+    testbed-any: reg-bcf-jenkins-slave-6
+  bmf:
+    testbed-accton: ACCTON-SLAVE
+    testbed-dell: DELL-SLAVE
+    testbed-hpe: HP-SLAVE
+    testbed-quanta: QUANTA-SLAVE
+    testbed-private: PRIVATE-SLAVE
+    non-testbed: PRIVATE-SLAVE
+
+jenkins_testbed_to_job_template_map:
+  bcf:
+    default: job_config_bcf.xml.jinja2
+  bmf:
+    default: job_config.xml.jinja2
+
+jenkins_testbed_to_pipeline_map:
+  bcf:
+    testbed-virtual: modules/jenkins/pipeline/pipeline-reg-bcf-regression-virtual
+    testbed-10g: modules/jenkins/pipeline/pipeline-reg-bcf-regression-physical
+    testbed-common: modules/jenkins/pipeline/pipeline-reg-bcf-regression-physical
+    default: modules/jenkins/pipeline/pipeline-reg-bcf-regression-physical
+
+regression_reporting_aliases:
+  bcf: bigrobot_stats_bcf@bigswitch.com
+  bigtap: bigrobot_stats_bigtap@bigswitch.com
+  bmf: bigrobot_stats_bigtap@bigswitch.com
+
+debug_owners:
+  bcf: duoyao
+  bmf: jsunbs
+
+# This is a list of releases containing new features. It needs to be updated
+# regularly when new features become available and old features are shipped.
+new_feature_releases:
+  bcf:
+  - bcf-470
+  bmf:
+  - eagle-640
+  mcd:
+  - mcd-100
+
+# The ordering here is important since we use the index to determine if a view
+# needs to be updated. 'virtual' has lower precedence than 'daily' which has
+# lower precedence than 'full'.
+# Note: 'virtual' and 'daily' are default tags. There are special regressions
+# such as 'switchlight'. Those should be of higher precedence than the defaults
+# but lower than 'full'.
+regression_views_order:
+- virtual
+- daily
+- switchlight
+- full
+- private
+
+test_types:
+- feature
+- scaling
+- performance
+- solution
+- longevity
+- negative
+- robustness
+
+testbeds:
+  bcf:
+  - 10g
+  - 40g
+  - 100g
+  - switch-platform
+  - common
+  - virtual
+  - aggregated
+  - private
+  - smoke
+  - switch-cable
+  - t2t2p         # T2 + T2Plus
+  - thpt2p        # Tomahawk + T2Plus
+  - any           # test suites with this testbed tag are platform independent and
+  # can be run on any testbed
+  - non-testbed   # used for suites which are not associated to any testbed
+  bmf:
+  - dell
+  - accton
+  - quanta
+  - switch-platform
+  - common
+  - virtual
+  - scale
+  - bmf-gui
+  - hpe
+  - ztn
+  - aggregated
+  - private
+  - smoke
+  - switch-cable
+  - non-testbed   # used for suites which are not associated to any testbed
+  mcd:
+  - private
+  - non-testbed   # used for suites which are not associated to any testbed
+  bigtap:   # obsolete
+  - dell
+  - accton
+  - quanta
+  - common
+  - virtual
+  - scale
+  - aggregated
+  - private
+
+# MongoDB queries embedded in data structure
+testbed_include_tags:
+  # Business logic: All tags must match
+  bcf:
+    10g:             { tags: { $all: [physical, testbed-10g] } }
+    40g:             { tags: { $all: [physical, testbed-40g] } }
+    100g:            { tags: { $all: [physical, testbed-100g] } }
+    switch-platform: { tags: { $all: [physical, testbed-switch-platform] } }
+    t2t2p:           { tags: { $all: [physical, testbed-t2t2p] } }
+    thpt2p:          { tags: { $all: [physical, testbed-thpt2p] } }
+    any:             { tags: { $all: [physical, testbed-any] } }
+    common:          { tags: { $all: [physical, testbed-common] } }
+    virtual:         { tags: { $all: [virtual] } }
+    aggregated:
+      # Aggregated testbed is assumed to include all tags of other testbeds
+      $or:
+      - { tags: { $all: [physical, testbed-10g] } }
+      - { tags: { $all: [physical, testbed-40g] } }
+      - { tags: { $all: [physical, testbed-100g] } }
+      - { tags: { $all: [physical, testbed-switch-platform] } }
+      - { tags: { $all: [physical, testbed-t2t2p] } }
+      - { tags: { $all: [physical, testbed-thpt2p] } }
+      - { tags: { $all: [physical, testbed-any] } }
+      - { tags: { $all: [physical, testbed-common] } }
+      - { tags: { $all: [virtual] } }
+
+    # For standard regression, this maps to testbed-private tag.
+    # For New Feature Regression, this will be replaced later (inside
+    #  QA Dashboard) with appropriate testbed tag, e.g.,
+    #  'testbed-private-ipv6-mgt'
+    private: { tags: { $all: [testbed-private] } }
+
+    # 'non-testbed' - this tag is used in gobot to suppress validation error
+    #                 when a testbed is not specified
+
+  bigtap:
+    # BigTap doesn't make distinction between physical and virtual environment.
+    # They are all run together in testbeds.
+    dell:            { tags: { $all: [testbed-dell] } }
+    accton:          { tags: { $all: [testbed-accton] } }
+    quanta:          { tags: { $all: [testbed-quanta] } }
+    scale:           { tags: { $all: [testbed-scale] } }
+    common:          { tags: { $all: [dummy1] } }   # Note: 2015-07-30 Common testbeds will be removed at some point
+    virtual:         { tags: { $all: [virtual] } }
+    aggregated:
+      $or:
+      - { tags: { $all: [testbed-dell] } }
+      - { tags: { $all: [testbed-accton] } }
+      - { tags: { $all: [testbed-quanta] } }
+      - { tags: { $all: [testbed-scale] } }
+    private: { tags: { $all: [testbed-private] } }  # This will be replaced later
+
+    # 'non-testbed' - this tag is used in gobot to suppress validation error
+    #                 when a testbed is not specified
+
+  bmf:
+    # BMF doesn't make distinction between physical and virtual environment.
+    # They are all run together in testbeds.
+    dell:            { tags: { $all: [testbed-dell] } }
+    accton:          { tags: { $all: [testbed-accton] } }
+    quanta:          { tags: { $all: [testbed-quanta] } }
+    switch-platform: { tags: { $all: [physical, testbed-switch-platform] } }
+    virtual:         { tags: { $all: [virtual] } }
+    scale:           { tags: { $all: [testbed-scale] } }
+    bmf-gui:         { tags: { $all: [testbed-bmf-gui] } }
+    hpe:             { tags: { $all: [testbed-hpe] } }
+    ztn:             { tags: { $all: [ztn] } }
+    aggregated:
+      $or:
+      - { tags: { $all: [testbed-dell] } }
+      - { tags: { $all: [testbed-accton] } }
+      - { tags: { $all: [testbed-quanta] } }
+      - { tags: { $all: [physical, testbed-switch-platform] } }
+      - { tags: { $all: [testbed-scale] } }
+      - { tags: { $all: [testbed-bmf-gui] } }
+      - { tags: { $all: [testbed-hpe] } }
+      - { tags: { $all: [testbed-ztn] } }
+    private: { tags: { $all: [testbed-private] } }  # This will be replaced later
+
+    # 'non-testbed' - this tag is used in gobot to suppress validation error
+    #                 when a testbed is not specified
+
+testbed_exclude_tags:
+  # BCF Business logics:
+  #   - ZTN is only supported in Common testbed. Exclude it from other testbeds.
+  bcf:
+    10g:             { tags: { $nin: [ztn] } }
+    40g:             { tags: { $nin: [ztn] } }
+    100g:            { tags: { $nin: [ztn] } }
+    switch-platform: { tags: { $nin: [ztn] } }
+    t2t2p:           { tags: { $nin: [ztn] } }
+    thpt2p:          { tags: { $nin: [ztn] } }
+    any:             { tags: { $nin: [ztn] } }
+    common:          { tags: { $nin: [dummy99] } }
+    virtual:         { tags: { $nin: [ztn] } }
+    aggregated:      { tags: { $nin: [ztn] } }
+    private:         { tags: { $nin: [dummy99] } }
+
+  # BigTap Business logics:
+  #   - None
+  bigtap:
+    dell:            { tags: { $nin: [dummy99] } }
+    accton:          { tags: { $nin: [dummy99] } }
+    quanta:          { tags: { $nin: [dummy99] } }
+    common:          { tags: { $nin: [dummy99] } }   # Note: 2015-07-30 Common testbeds will be removed at some point
+    virtual:         { tags: { $nin: [dummy99] } }
+    aggregated:      { tags: { $nin: [dummy99] } }
+    private:         { tags: { $nin: [dummy99] } }
+
+  # BMF Business logics:
+  #   - None
+  bmf:
+    dell:            { tags: { $nin: [dummy99] } }
+    accton:          { tags: { $nin: [dummy99] } }
+    quanta:          { tags: { $nin: [dummy99] } }
+    switch-platform: { tags: { $nin: [dummy99] } }
+    virtual:         { tags: { $nin: [dummy99] } }
+    scale:           { tags: { $nin: [dummy99] } }
+    bmf-gui:         { tags: { $nin: [dummy99] } }
+    hpe:             { tags: { $nin: [dummy99] } }
+    ztn:             { tags: { $nin: [dummy99] } }
+    aggregated:      { tags: { $nin: [dummy99] } }
+    private:         { tags: { $nin: [dummy99] } }
+
+manual_test_tags:
+  off: [manual, manual-untested, manual-not-automated]   # manual tags to ignore
+  on:  [dummy99]
+
+# Maps the regression tags to actual test coverage
+regression_tags_coverage_map:
+  bcf:
+    full: []                         # include all tests in catalog for product
+    virtual: [virtual]               # include only virtual tests
+    daily: [daily-sanity, sanity, testbed-40g, testbed-100g]
+    switchlight: [switch-platform]   # include only switch platform
+  bigtap:
+    full: []                         # include all tests in catalog for product
+    virtual: [virtual]               # include only virtual tests
+    daily: [daily-sanity, sanity]    # include only daily sanity tests
+    switchlight: [switch-platform]   # include only switch platform
+  bmf:
+    full: []                         # include all tests in catalog for product
+    virtual: [virtual]               # include only virtual tests
+    daily: [daily-sanity, sanity]    # include only daily sanity tests
+    switchlight: [switch-platform]   # include only switch platform
+
+platforms:
+- dell-s4810
+- dell-s4048
+- dell-s4048-54t
+- dell-s4000                       # same as dell-s4048
+- dell-s4112f
+- dell-s4148t
+- dell-s4148f
+- dell-s5048
+- dell-s6000
+- dell-s6010
+- dell-s6100
+- dell-z9100
+- accton-as4600
+- accton-as5610
+- accton-as5710
+- accton-as5712
+- accton-as6700
+- accton-as6712
+- accton-as6812
+- accton-as7312
+- accton-as7312xs
+- accton-as7712                    # 100G switch
+- accton-as5812-54t                # new for BCF 3.6.0
+- accton-as5812-54x                # new for BCF 3.6.0
+- quanta-lb9
+- quanta-ly2
+
+# HPE (Hewlett-Packard Enterprise) Altoline switches
+- hpe-al6921f                      # 2017-04-14 re-branded accton-as5812t
+- hpe-al6921t
+- hpe-al6941
+- hpe-al6960
+
+# Note: Releases field is an ordered list to reflect precedence, e.g.,
+#       ironhorse comes before ironhorse-plus which comes before jackfrost.
+products:
+  bcf:
+    pretty_name: BCF
+    releases:
+    - ironhorse:
+        version:
+        - 2.0.0
+        - 2.0.2           # patch1
+        software_image_map:
+        - ih
+        ga_date: 2014-04
+    - ironhorse-plus:
+        version:
+        - 2.5.0
+        - 2.5.4
+        software_image_map:
+        - ihp
+        - ihplus
+        - ih254           # 2015-04-20, IronHorse 2.5.0 patch release
+        ga_date: 2014-10
+    - ironhorse-260:
+        version:
+        - 2.6.0
+        software_image_map:
+        - ih260
+        - ihplus          # 2015-04-06 IH 2.6.0 still uses IH Plus build
+        - ih-260
+        ga_date: null
+    - ironhorse-261:
+        version:
+        - 2.6.1
+        software_image_map:
+        - ih261
+        - ih-261          # 2015-07-01 IH 2.6.1
+        ga_date: null
+    - ironhorse-270:
+        version:
+        - 2.7.0
+        software_image_map:
+        - ih270
+        - ih-270          # 2015-07-02 IH 2.7.0
+        ga_date: null
+    - jackfrost:                   # 2015-08-16 GA date
+        version:
+        - 3.0.0
+        software_image_map:
+        - jf
+        - jf-300
+        - jf300
+        - jf301           # 2015-08-31 Patch (?)
+        ga_date: 2015-07
+    - jackfrost-plus:              # Target release: 2015/09/15
+        version:                   # Main driver: Verizon deployment
+        - 3.1.0
+        software_image_map:
+        - jhp
+        - jf310
+        - jf-310
+        ga_date: null
+    - knockout:
+        version:
+        - 3.5.0
+        software_image_map:
+        - ko
+        - ko-350
+        - ko350
+        - ko351           # 2016-01-27 Patch release
+        - ko352           # 2016-03-10 Patch release
+        ga_date: 2015-12-18
+    - knockout-plus:               # 2015-12-21 Release code name revealed
+        version:
+        - 3.6.0
+        - 3.6.1           # 2016-07-14
+        software_image_map:
+        - ko360
+        - ko-360
+        ga_date: 2016-06-20
+    - knockout-370:
+        version:
+        - 3.7.0           # 2016-08-04 New platforms added
+        software_image_map:
+        - ko370
+        ga_date: 2016-08-31
+    - bcf-400:
+        version:
+        - 4.0.0           # 2016-09-01 BCF 4.0.0 started
+        software_image_map:
+        - bcf400
+        ga_date: 2016-12-16
+    - bcf-410:
+        version:
+        - 4.1.0           # 2017-01-20 BCF 4.1.0 started
+        software_image_map:
+        - bcf410
+        ga_date: 2017-02-15
+    - bcf-420:
+        version:
+        - 4.2.0           # 2017-03-01 BCF 4.2.0 already in progress
+        software_image_map:
+        - bcf420
+        ga_date: 2017-07-09
+    - bcf-424:
+        # Per Ivan Lum: It's a patch release where we're adding
+        # support for a new interface module. This module allows
+        # support of a whole new bunch of SFPs.
+        version:
+        - 4.2.4
+        software_image_map:
+        - bcf420
+        ga_date: 2017-10-30
+    - bcf-450:
+        version:
+        - 4.5.0           # 2017-07-10
+        software_image_map:
+        - bcf450
+        ga_date: 2017-10-31
+    - bcf-460:
+        version:
+        - 4.6.0           # 2017-09-25 (planning)
+        software_image_map:
+        - bcf460
+        ga_date: 2018-02-26
+    - bcf-470:
+        version:
+        - 4.7.0           # 2017-02-28 (planning)
+        software_image_map:
+        - bcf470
+        ga_date: null
+    - bcf-500:                     # Formerly known as bcf-480
+        version:
+        - 5.0.0           # 2017-05-11 (planning)
+        software_image_map:
+        - bcf470
+        ga_date: null
+    - master:
+        version:
+        - top-of-tree
+        software_image_map:
+        - master
+        ga_date: null
+
+  bigtap:
+    pretty_name: BigTap
+    releases:
+    - augusta:
+        version:
+        - 2.0.0
+        software_image_map:
+        - augusta
+        ga_date: 2013-08-08
+    - blackbird-300:
+        version:
+        - 3.0.0
+        - 3.0.1
+        software_image_map:
+        - blackbird300
+        ga_date: 2014-01-31
+    - blackbird-310:
+        version:
+        - 3.1.0
+        - 3.1.1
+        software_image_map:
+        - blackbird310
+        ga_date: 2014-04-28
+    - corsair-400:
+        version:
+        - 4.0.0
+        - 4.0.1           # shellshock patch
+        - 4.0.2           # poodle patch
+        - 4.1.0           # various bug fixes
+        software_image_map:
+        - corsair400
+        ga_date: 2014-08-14
+    - corsair-411:
+        version:
+        - 4.1.1           # new platforms, buffer mgt
+        software_image_map:
+        - corsair411
+        ga_date: 2014-12-03
+    - corsair-450:                 # release date: 2015/4/30
+        version:
+        - 4.5.0
+        software_image_map:
+        - corsair450
+        ga_date: 2015-05-03
+    - corsair-460:                 # release date: 2015/5/15
+        version:
+        - 4.6.0
+        software_image_map:
+        - corsair460
+        ga_date: 2015-05-22
+    - corsair-461:                 # release date: 2015/7/31 (release date)
+        version:
+        - 4.6.1
+        software_image_map:
+        - corsair461
+        ga_date: 2015-08-03
+    - corsair-470:                 # release date: 2015/6/15
+        version:
+        - 4.7.0
+        software_image_map:
+        - corsair470
+        ga_date: 2015-06-15
+    - dragon-500:
+        version:
+        - 5.0.0
+        software_image_map:
+        - dragon500
+        ga_date: 2015-09-14
+    - dragon-510:
+        version:
+        - 5.1.0
+        software_image_map:
+        - dragon510
+        ga_date: null
+    - dragon-550:                 # added on 2015-09-24
+        version:
+        - 5.5.0
+        software_image_map:
+        - dragon550
+        - dragon551      # 2016-02-01 Patch release
+        ga_date: 2015-12-18
+    - dragon-560:                 # added on 2015-12-21 (per Animesh)
+        version:
+        - 5.6.0
+        software_image_map:
+        - dragon560
+        ga_date: 2016-04-28
+    - dragon-570:                 # added on 2015-12-21 (per Animesh)
+        version:
+        - 5.7.0
+        software_image_map:
+        - dragon570
+        ga_date: 2016-07-10
+    - dragon-580:                 # added on 2016-08-12 (per Sahaja)
+        version:
+        - 5.8.0
+        software_image_map:
+        - dragon580
+        ga_date: 2016-10-03
+    - dragon-581:                 # added on 2016-10-05 (new platforms)
+        version:
+        - 5.8.1
+        software_image_map:
+        - dragon581
+        ga_date: 2016-11-09
+    - master:
+        version:
+        - top-of-tree
+        software_image_map:
+        - master
+        ga_date: null
+
+  bmf:
+    pretty_name: BMF
+    releases:
+    - eagle-600:
+        version:
+        - 6.0.0
+        software_image_map:
+        - eagle600
+        ga_date: 2017-03-07
+    - eagle-601:                  # added on 2017-04-15 (for qualifying HPE platform)
+        version:
+        - 6.0.1
+        software_image_map:
+        - eagle601
+        ga_date: 2017-04-19
+    - eagle-602:                  # added on 2017-07-10
+        version:
+        - 6.0.2
+        software_image_map:
+        - eagle602
+        ga_date: 2017-05-16
+    - eagle-610:
+        version:
+        - 6.1.0
+        software_image_map:
+        - eagle610
+        ga_date: 2017-09-21
+    - eagle-620:                 # start in Oct 2017 (long lived release - committed to supporting for 5 years)
+        version:
+        - 6.2.0
+        software_image_map:
+        - eagle620
+    - eagle-621:                 # start in Mar 2018 (support for CPLD in Accton)
+        version:
+        - 6.2.1
+        software_image_map:
+        - eagle621
+    - eagle-622:                 # start in Jun 2018 ()
+        version:
+        - 6.2.2
+        software_image_map:
+        - eagle622
+    - eagle-630:                 # start in Dec 2017
+        version:
+        - 6.3.0
+        software_image_map:
+        - eagle630
+    - eagle-631:                 # start in Dec 2017
+        version:
+        - 6.3.1
+        software_image_map:
+        - eagle631
+    - eagle-632:                 # start in Mar 2018 (Packet Recorder, Analytics Hosts)
+        version:
+        - 6.3.2
+        software_image_map:
+        - eagle632
+    - eagle-633:                 # start in April 2018
+        version:
+        - 6.3.3
+        software_image_map:
+        - eagle633
+    - eagle-634:                 # start in May 2018
+        version:
+        - 6.3.4
+        software_image_map:
+        - eagle634
+    - eagle-640:                 # start in April 2018
+        version:
+        - 6.4.0
+        software_image_map:      # QA start on 2018/04/25, complete on 2018/06/21
+        - eagle640
+        ga_date: 2018-07-30      # External GA target
+    - eagle-700:                 # start in April 2018 (formerly known as eagle-640)
+        version:
+        - 7.0.0
+        software_image_map:      # QA start on 2018/04/25, complete on 2018/06/21
+        - eagle700
+        ga_date: 2018-07-30      # External GA target
+    - master:
+        version:
+        - top-of-tree
+        software_image_map:
+        - master
+  mcd:  # Multi Cloud Director
+    pretty_name: MCD
+    releases:
+    - mcd-beta1:
+        version:
+        - 2.0.0
+        software_image_map:
+        - mcdbeta1
+        ga_date: null
+    - master:
+        version:
+        - top-of-tree
+        software_image_map:
+        - master
+
+  # Note: Some tests are only supported for a single release. They should
+  #       only be run for that release and no others. An example is "augusta-only".
+  #       It is difficult to track the stats for these single product tests, so
+  #       we just ignore them in most regression reports for now. We can revisit
+  #       and resvise this policy in the future.
+  #
+  #       We should tag tests which are meant for a single product using the
+  #       tag "single-product-only". This is to prevent the baseline collection
+  #       tool from flagging them as errors.
+  single-product:
+    releases:
+    - single-product-only:
+        version:
+        - 0.0.1
+        software_image_map:
+        - single_product_only
+        ga_date: null
+
+  # Note: Some tests are created as infrastructure tools. They should not
+  #       be tracked in the Test Catalog.  For these suites, add "non-release"
+  #       in the Force Tags field of the text file. E.g.,
+  #          * Settings
+  #          Force Tags     non-release
+  non-product:
+    releases:
+    - non-release:
+        version:
+        - 0.0.1
+        software_image_map:
+        - nonrelease
+        ga_date: null
