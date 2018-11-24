@@ -1,21 +1,26 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify,session
 from flask_cors import CORS
-
+import os
 import tensorflow as tf
-
+import urllib.request
 import threading
 import json
 import numpy as np
+import wikipedia
 
 from prepro import convert_to_features, word_tokenize
 from time import sleep
+from werkzeug.utils import secure_filename
+import logging
 
+logging.basicConfig(level=logging.INFO)
 
+logger = logging.getLogger('HELLO WORLD')
 app = Flask(__name__)
 CORS(app)
 query = []
 response = ""
-
+UPLOAD_FOLDER = 'uploads'
 
 @app.route('/answer', methods=['POST'])
 def answer():
@@ -34,6 +39,35 @@ def answer():
    # response_ = {"answer": response}
     #response = []
     return jsonify({"answer": response}), 201
+
+
+@app.route('/upload', methods=['POST'])
+def fileUploader():
+    # target=os.path.join(UPLOAD_FOLDER,'test_docs')
+    # if not os.path.isdir(target):
+    #     os.mkdir(target)
+    # logger.info("welcome to upload`")
+    # #file = request.files['file']
+    data = request.files['file'].read()
+    # print(data)
+    # filename = secure_filename(file.filename)
+    # destination="/".join([target, filename])
+    # file.save(destination)
+    #
+    # text=file.read()
+    #session['uploadFilePath']=destination
+
+    return jsonify({"text": format(data)}),201
+
+@app.route('/keyword', methods=['POST'])
+def searchWiki():
+    print(request.get_json())
+    keyword = request.get_json()['keyword']
+    content =  wikipedia.summary(keyword, sentences=7)
+    #print(content)
+    return jsonify({"keyword_data": content}),201
+
+
 
 class Demo(object):
     def __init__(self, model, config):
@@ -81,4 +115,5 @@ class Demo(object):
                         yp2[0] += 1
                         response = " ".join(context[yp1[0]:yp2[0]])
                         query = []
+
 

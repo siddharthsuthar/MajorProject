@@ -24,9 +24,9 @@ class HomePage extends Component {
             text:'Enter the Text or Drop a File',
             question:'Enter the Question',
             answer:'',
-            files:[],
+            file:[],
             textArea: false,
-            link:'Paste the Link here',
+            keyword:'Enter the Keyword here',
             show:false
         };
     }
@@ -36,25 +36,71 @@ class HomePage extends Component {
 
     }
 
+    handleKeyword = ()=>{
+        var payload = {'keyword': this.state.keyword}
 
-    handleSubmit = (text) => {
-      // API.processText(text)
-      //       .then((res)  => {
-      //
-      //     if (res.status == 200) {
-      //         console.log('success')
-      //     } else if (res.status == 401) {
-      //         console.log('Error')
-      //     }
-      //   });
+        API.processKeyword(payload)
+            .then((res)  => {
+                console.log(res)
+                if (res.status == 201) {
+                    res.json().then((response) => {
+                        console.log(response)
+                        this.setState({
+                            text:response.keyword_data,
+                            show : false
+                        })
+                    })
+
+                } else if (res.status == 401) {
+                    console.log('Error')
+                }
+            });
+    }
+
+    handleSubmit = () => {
+        var payload = {'passage': this.state.text , 'question' : this.state.question }
+
+        API.processText(payload)
+            .then((res)  => {
+                console.log(res)
+                if (res.status == 201) {
+                    res.json().then((response) => {
+                        console.log(response)
+                        this.setState({
+                            answer:response.answer
+                        })
+                    })
+
+                } else if (res.status == 401) {
+                    console.log('Error')
+                }
+            });
         
     }
 
-    // handleFileRead = (e) => {
-    //     var content = this.state.fileReader.result;
-    //     console.log(content);
-    //     // … do something with the 'content' …
-    // };
+    handleFileUpload = () =>{
+
+        const payload = new FormData();
+        payload.append('file' , this.state.file[0])
+        console.log(payload)
+        API.uploadFile(payload)
+            .then((res)  => {
+                console.log(res)
+                if (res.status == 201) {
+                    res.json().then((response) => {
+                        console.log(response)
+                        this.setState({
+                            text:response.text
+                        })
+                    })
+                    console.log(res)
+                } else if (res.status == 401) {
+                    console.log('Error')
+                }
+            });
+    };
+
+
 
     handleHide() {
         //this.state.show = false;
@@ -78,10 +124,12 @@ class HomePage extends Component {
 
     onDrop(files){
         this.setState({
-            files:files,
+            file:files,
             textArea:true
         });
+        this.state.file = files
         this.state.text = "File Uploaded --> " + files[0].name
+        this.handleFileUpload()
       }
 
     render() {
@@ -123,7 +171,7 @@ class HomePage extends Component {
                   <br/>
                   <br/>
                   <br/>
-                  
+
                 <div className="row">
                   
                   <div className="col-md-2">
@@ -144,12 +192,13 @@ class HomePage extends Component {
                   <div className="col-md-2">
                      <label>Answer:</label>
                   </div>
+                  <div className="col-md-8"> <label>{this.state.answer}</label></div>
                 </div>
                 
                 <br/>
                 <br/>
 
-                <Button bsStyle="success" >Submit</Button>
+                <Button bsStyle="success" onClick={()=>{this.handleSubmit()}} >Submit</Button>
                 <div className="space"></div>
                 <Button bsStyle="primary" onClick={()=>this.newQuestion()}>New Question</Button>
                 <div className="space"></div>
@@ -167,15 +216,15 @@ class HomePage extends Component {
                         </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <input type="text" className="form-control" placeholder={this.state.link}
+                        <input type="text" className="form-control" placeholder={this.state.keyword}
                                onChange={(event) => {
                                    this.setState({
-                                       link:event.target.value
+                                       keyword:event.target.value
                                    });
                                }}/>
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button bsStyle = "success" onClick={()=>{this.handleLink()}}> Search</Button>
+                        <Button bsStyle = "success" onClick={()=>{this.handleKeyword()}}> Search KeyWord</Button>
                         <div className="space"></div>
                         <Button bsStyle="danger" onClick={()=>{this.handleHide()}}>Close</Button>
                     </Modal.Footer>

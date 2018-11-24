@@ -4,8 +4,9 @@ const headers = {
     'Accept': 'application/json'
 };
 
+
 export const processText = (payload) =>
-    fetch(`${api}/api/processtext`, {
+    fetch(`${api}/answer`, {
         method: 'POST',
         headers: {
             ...headers,
@@ -23,13 +24,30 @@ export const processText = (payload) =>
 
 
 export const uploadFile = (payload) =>
-    fetch(`${api}/api/upload`, {
+    fetch(`${api}/upload`, {
         method: 'POST',
-        body: payload
+        body:payload
     }).then(res => {
         return res;
     }).catch(error => {
         console.log("This is error");
         return error;
     });
+
+export const processKeyword = (payload)=>
+    fetch(`${api}/keyword`, {
+        method: 'POST',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    }).then(res => {
+
+        return res;
+    })
+        .catch(error => {
+            console.log("This is error");
+            return error;
+        });
 
